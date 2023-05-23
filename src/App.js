@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import { useRef, useState } from 'react';
+import { useIntersection } from './useIntersection';
 import './App.css';
 
 function App() {
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const ref = useRef(null);
+  useIntersection(ref, setIsIntersecting);
+  console.log(isIntersecting);
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="App">  
+        <header>This is the Header</header>
+        <main ref={ref}>
+            <div className="child-one">Child One</div>
+            <div className="child-two">Child Two</div>
+        </main>      
+        <footer>This is the Footer</footer>
+      </div>
   );
 }
 
